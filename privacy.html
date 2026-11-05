@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kebijakan Privasi Brifely</title>
+  <meta name="description" content="Data apa yang dikumpulkan ekstensi dan aplikasi desktop Brifely, dan di mana data itu disimpan.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="./">Brifely</a>
+    <nav><a href="#english">English</a></nav>
+  </header>
+
+  <main>
+    <h1>Kebijakan Privasi</h1>
+    <p class="muted">Berlaku sejak 5 November 2026</p>
+
+    <p>
+      Brifely terdiri dari ekstensi browser dan aplikasi desktop. Keduanya dibuat agar transkrip rapatmu
+      tetap di komputermu. Brifely tidak punya server, tidak memakai akun, dan tidak mengumpulkan analitik.
+    </p>
+
+    <h2>Data yang diproses ekstensi</h2>
+    <table>
+      <tr><th>Data</th><th>Untuk apa</th><th>Disimpan di</th></tr>
+      <tr>
+        <td>Teks caption yang tampil di halaman Google Meet / Microsoft Teams, nama pembicara yang ditampilkan caption, dan judul rapat</td>
+        <td>Menyusun transkrip rapat</td>
+        <td>Sementara di <code>chrome.storage.local</code> pada browsermu, lalu diserahkan ke aplikasi desktop Brifely di komputer yang sama</td>
+      </tr>
+    </table>
+    <p>
+      Ekstensi <b>tidak mengirim data ke internet</b>. Satu-satunya tujuan data adalah program konektor Brifely
+      di komputermu sendiri, lewat fitur <i>native messaging</i> browser. Ekstensi hanya berjalan di
+      <code>meet.google.com</code> dan domain Microsoft Teams, dan tidak membaca situs lain.
+    </p>
+
+    <h3>Mengapa ekstensi meminta izin ini</h3>
+    <ul>
+      <li><b>Akses ke Meet dan Teams</b>: membaca caption yang sudah tampil di layar rapat.</li>
+      <li><b>nativeMessaging</b>: menyerahkan transkrip ke aplikasi desktop Brifely di komputermu.</li>
+      <li><b>tabs</b>: mengenali tab rapat yang sedang aktif dan kapan tab itu ditutup.</li>
+      <li><b>storage</b>: menahan transkrip sampai aplikasi desktop menerimanya.</li>
+      <li><b>sidePanel</b>: menampilkan transkrip langsung di samping rapat.</li>
+      <li><b>alarms</b>: mencoba ulang pengiriman ke aplikasi desktop secara berkala.</li>
+    </ul>
+
+    <h2>Data yang diproses aplikasi desktop</h2>
+    <ul>
+      <li>
+        <b>Transkrip</b> disimpan di database SQLite pada folder data pengguna
+        (Windows: <code>%APPDATA%\Brifely</code>; macOS: <code>~/Library/Application Support/Brifely</code>;
+        Linux: <code>~/.local/share/Brifely</code>).
+      </li>
+      <li>
+        <b>Rekaman audio</b> (hanya bila kamu menekan rekam atau menyalakan rekam otomatis) ditranskripsi
+        di komputermu dengan Whisper. Berkas audio disimpan hanya bila opsi "Simpan audio" aktif, dan bisa dihapus per rapat.
+      </li>
+      <li>
+        <b>Rangkuman dan Tanya AI</b>: bila kamu memakainya, potongan transkrip dikirim ke penyedia AI yang
+        <i>kamu sendiri</i> atur (misalnya OpenAI, OpenRouter, atau model lokal seperti Ollama). Data itu
+        tunduk pada kebijakan privasi penyedia tersebut. Bila kamu memakai model lokal, transkrip tidak keluar dari komputermu.
+      </li>
+      <li>
+        <b>API key</b> penyedia AI disimpan di database lokal yang sama. Saat ini belum dienkripsi.
+      </li>
+      <li>
+        <b>Unduhan model Whisper</b> diambil dari Hugging Face saat diperlukan. Permintaan itu tidak memuat data rapatmu.
+      </li>
+    </ul>
+
+    <h2>Yang tidak kami lakukan</h2>
+    <ul>
+      <li>Kami tidak menerima, melihat, atau menyimpan data rapatmu di server mana pun.</li>
+      <li>Kami tidak menjual atau menyewakan data, dan tidak memindahkannya ke pihak ketiga, kecuali ke penyedia AI yang kamu pilih sendiri seperti dijelaskan di atas.</li>
+      <li>Kami tidak memakai data untuk iklan, profil pengguna, atau penilaian kelayakan kredit.</li>
+      <li>Tidak ada analitik, pelacakan, atau cookie.</li>
+    </ul>
+    <p>
+      Pemakaian data oleh Brifely mematuhi
+      <a href="https://developer.chrome.com/docs/webstore/program-policies/user-data-faq">Kebijakan Data Pengguna Chrome Web Store</a>,
+      termasuk persyaratan <i>Limited Use</i>.
+    </p>
+
+    <h2>Menghapus data</h2>
+    <ul>
+      <li>Hapus satu rapat (beserta audionya) dari aplikasi desktop.</li>
+      <li>Hapus semua data dengan menghapus folder data Brifely di atas.</li>
+      <li>Menghapus ekstensi juga menghapus transkrip yang masih tertahan di browser.</li>
+    </ul>
+
+    <h2>Perubahan kebijakan</h2>
+    <p>Perubahan akan diumumkan di halaman ini dengan tanggal berlaku yang baru.</p>
+
+    <h2>Kontak</h2>
+    <p>Pertanyaan tentang privasi: <a href="https://github.com/alfikr/site/issues">GitHub Issues</a>.</p>
+
+    <hr>
+
+    <h1 id="english">Privacy Policy</h1>
+    <p class="muted">Effective November 5, 2026</p>
+
+    <p>
+      Brifely consists of a browser extension and a desktop app, built so that your meeting transcripts stay
+      on your computer. Brifely has no servers, no accounts, and no analytics.
+    </p>
+
+    <h2>What the extension handles</h2>
+    <p>
+      The extension reads the caption text shown on Google Meet and Microsoft Teams pages, together with the speaker
+      names shown in those captions and the meeting title. It holds them temporarily in <code>chrome.storage.local</code>
+      and hands them to the Brifely desktop app on the same computer through the browser's native messaging feature.
+      <b>The extension makes no network requests.</b> It runs only on <code>meet.google.com</code> and Microsoft
+      Teams domains.
+    </p>
+    <p>
+      Permissions: site access to Meet and Teams to read captions; <b>nativeMessaging</b> to deliver transcripts
+      to the local desktop app; <b>tabs</b> to know which meeting tab is active and when it closes;
+      <b>storage</b> to hold transcripts until delivered; <b>sidePanel</b> to show the live transcript;
+      <b>alarms</b> to retry delivery.
+    </p>
+
+    <h2>What the desktop app handles</h2>
+    <ul>
+      <li>Transcripts are stored in a local SQLite database in your user data folder.</li>
+      <li>Audio recording happens only when you start it, or turn on auto-record. Audio is transcribed locally with Whisper. Audio files are kept only if you enable it, and can be deleted per meeting.</li>
+      <li>Summaries and "Ask AI" send transcript excerpts to the AI provider <i>you</i> configure, which may be a local model. That provider's privacy policy applies.</li>
+      <li>Your AI provider API key is stored in the same local database, currently unencrypted.</li>
+      <li>Whisper models are downloaded from Hugging Face when needed. These requests contain no meeting data.</li>
+    </ul>
+
+    <h2>What we don't do</h2>
+    <p>
+      We never receive or store your meeting data on any server. We do not sell or transfer it to third parties,
+      other than the AI provider you choose. We do not use it for advertising, profiling, or creditworthiness. There is no tracking.
+      Brifely's use of data complies with the
+      <a href="https://developer.chrome.com/docs/webstore/program-policies/user-data-faq">Chrome Web Store User Data Policy</a>,
+      including the Limited Use requirements.
+    </p>
+
+    <h2>Deleting your data</h2>
+    <p>
+      Delete individual meetings in the desktop app, or remove the Brifely data folder. Uninstalling the extension
+      removes any transcripts still held in the browser.
+    </p>
+
+    <h2>Contact</h2>
+    <p><a href="https://github.com/alfikr/site/issues">GitHub Issues</a></p>
+  </main>
+
+  <footer>
+    Brifely · <a href="./">Beranda</a>
+  </footer>
+</body>
+</html>
